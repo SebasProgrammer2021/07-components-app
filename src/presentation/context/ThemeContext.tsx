@@ -1,27 +1,33 @@
+import React, { useState } from 'react';
 import { PropsWithChildren, createContext } from "react";
-import { ThemeColors, lightColors } from "../../config/theme/theme";
+import { ThemeColors, darkColors, lightColors } from "../../config/theme/theme";
 
 type ThemeColor = 'light' | 'dark'
 
 interface ThemeContextProps {
   currentTheme: ThemeColor;
   colors: ThemeColors;
+  isDark: boolean;
   setTheme: (theme: ThemeColor) => void;
 }
 
 export const ThemeContext = createContext({} as ThemeContextProps);
 
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
+  const [currentTheme, setCurrentTheme] = useState<ThemeColor>('light');
   const setTheme = (theme: ThemeColor) => {
-    console.log({ theme });
+    setCurrentTheme(theme);
   }
 
   return (
-    <ThemeContext.Provider value={{
-      currentTheme: 'light',
-      colors: lightColors,
-      setTheme: () => setTheme
-    }}>
+    <ThemeContext.Provider
+      value={{
+        currentTheme: currentTheme,
+        isDark: currentTheme !== 'light',
+        colors: currentTheme === 'light' ? lightColors : darkColors,
+        setTheme: setTheme
+      }}
+    >
       {children}
     </ThemeContext.Provider >
   )

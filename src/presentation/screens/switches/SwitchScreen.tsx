@@ -4,6 +4,7 @@ import CustomView from '../../components/ui/CustomView';
 import Card from '../../components/ui/Card';
 import CustomSwitch from '../../components/ui/CustomSwitch';
 import Separator from '../../components/ui/Separator';
+import Title from '../../components/ui/Title';
 
 const SwitchScreen = () => {
   // const [isEnabled, setIsEnabled] = useState(false);
@@ -16,7 +17,7 @@ const SwitchScreen = () => {
   })
   return (
     <CustomView style={{
-      marginTop: 100,
+      // marginTop: 100,
       paddingHorizontal: 20
     }}>
       {/* <Card>
@@ -28,6 +29,7 @@ const SwitchScreen = () => {
           value={isEnabled}
         />
       </Card> */}
+      <Title text='Switches' />
 
       <Card>
         <CustomSwitch

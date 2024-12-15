@@ -44,7 +44,7 @@ const TextInputScreen = () => {
               keyboardType='phone-pad'
             />
           </Card>
-          <Card>
+          <Card style={{ marginTop: 20 }}>
             <Text>{JSON.stringify(form, null, 2)}</Text>
             <Text>{JSON.stringify(form, null, 2)}</Text>
             <Text>{JSON.stringify(form, null, 2)}</Text>

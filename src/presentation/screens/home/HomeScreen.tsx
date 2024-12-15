@@ -4,6 +4,7 @@ import { globalStyles } from '../../../config/theme/theme';
 import { ScrollView } from 'react-native-gesture-handler';
 import Title from '../../components/ui/Title';
 import MenuItem from '../../components/ui/MenuItem';
+import CustomView from '../../components/ui/CustomView';
 // import { AirplaneIcon } from '../../icons/icons';
 const animationMenuItems = [
   {
@@ -72,53 +73,51 @@ const uiMenuItems = [
 
 const HomeScreen = () => {
   return (
-    <View style={[globalStyles.mainContainer]}>
-      <View style={[globalStyles.globalMargin]}>
-        <ScrollView>
-          <Title text='mi texto' safe />
-          {
-            animationMenuItems.map((menuItem, index) => (
-              // forma mia
-              // <MenuItem name={menuItem.name} icon={menuItem.icon} component={menuItem.component} />
-              <MenuItem
-                key={menuItem.component}
-                {...menuItem}
-                isFirst={index === 0}
-                isLast={index === animationMenuItems.length - 1}
-              />
-            ))
-          }
-          
-          <View style={{ marginTop: 30 }} />
-          {
-            uiMenuItems.map((menuItem, index) => (
-              <MenuItem
-                key={menuItem.component}
-                {...menuItem}
-                isFirst={index === 0}
-                isLast={index === uiMenuItems.length - 1}
-              />
-            ))
-          }
+    <CustomView margin>
+      <ScrollView>
+        <Title text='mi texto' safe />
+        {
+          animationMenuItems.map((menuItem, index) => (
+            // forma mia
+            // <MenuItem name={menuItem.name} icon={menuItem.icon} component={menuItem.component} />
+            <MenuItem
+              key={menuItem.component}
+              {...menuItem}
+              isFirst={index === 0}
+              isLast={index === animationMenuItems.length - 1}
+            />
+          ))
+        }
 
-          <View style={{ marginTop: 30 }} />
-          {
-            menuItems.map((menuItem, index) => (
-              <MenuItem
-                key={menuItem.component}
-                {...menuItem}
-                isFirst={index === 0}
-                isLast={index === menuItems.length - 1}
-              />
-            ))
-          }
+        <View style={{ marginTop: 30 }} />
+        {
+          uiMenuItems.map((menuItem, index) => (
+            <MenuItem
+              key={menuItem.component}
+              {...menuItem}
+              isFirst={index === 0}
+              isLast={index === uiMenuItems.length - 1}
+            />
+          ))
+        }
+
+        <View style={{ marginTop: 30 }} />
+        {
+          menuItems.map((menuItem, index) => (
+            <MenuItem
+              key={menuItem.component}
+              {...menuItem}
+              isFirst={index === 0}
+              isLast={index === menuItems.length - 1}
+            />
+          ))
+        }
 
 
-          <View style={{ marginTop: 30 }} />
-        </ScrollView>
-      </View>
+        <View style={{ marginTop: 30 }} />
+      </ScrollView>
       {/* <AirplaneIcon /> */}
-    </View >
+    </CustomView>
   );
 }
 

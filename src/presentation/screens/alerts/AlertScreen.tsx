@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Alert, StyleSheet } from 'react-native';
 import CustomView from '../../components/ui/CustomView';
 import Title from '../../components/ui/Title';
@@ -6,8 +6,11 @@ import { globalStyles } from '../../../config/theme/theme';
 import Separator from '../../components/ui/Separator';
 import Button from '../../components/ui/Button';
 import { promptAdapter } from '../../../config/adapters/prompt.adapter';
+import { ThemeContext } from '../../context/ThemeContext';
 
 const AlertScreen = () => {
+  const { isDark } = useContext(ThemeContext);
+
   const createTwoButtonAlert = () =>
     Alert.alert('Alert Title', 'My Alert Msg', [
       {
@@ -16,8 +19,14 @@ const AlertScreen = () => {
         style: 'destructive',
       },
       { text: 'OK', onPress: () => console.log('OK Pressed') },
-    ]);
+    ],
+      {
+        userInterfaceStyle: isDark ? 'dark' : 'light'
+      }
+    );
 
+  /*************  ✨ Codeium Command ⭐  *************/
+  /******  b751286d-f017-4a24-8544-6e2e08974511  *******/
   const createThreeButtonAlert = () =>
     Alert.alert('Alert Title', 'My Alert Msg', [
       {
@@ -30,7 +39,11 @@ const AlertScreen = () => {
         style: 'cancel',
       },
       { text: 'OK', onPress: () => console.log('OK Pressed') },
-    ]);
+    ],
+      {
+        userInterfaceStyle: isDark ? 'dark' : 'light'
+      }
+    );
 
   const createCustomAlert = () =>
     Alert.alert('Custom Alert', 'Custom Alert Msg', [
